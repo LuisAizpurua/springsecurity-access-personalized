@@ -1,8 +1,10 @@
 package com.sec.practice.oauth.dto;
 
+import com.sec.practice.oauth.persistence.entities.sec.User;
+
 import java.io.Serializable;
 
-public class UserSave  implements Serializable {
+public class UserSave extends User implements Serializable {
 
     private Long id;
 
