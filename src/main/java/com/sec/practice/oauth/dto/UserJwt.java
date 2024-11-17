@@ -11,6 +11,14 @@ public class UserJwt implements Serializable {
 
     private String jwt;
 
+    public UserJwt(String username, Date date, String jwt) {
+        this.username = username;
+        this.date = date;
+        this.jwt = jwt;
+    }
+
+    public UserJwt(){}
+
     public String getUsername() {
         return username;
     }
@@ -33,5 +41,14 @@ public class UserJwt implements Serializable {
 
     public void setJwt(String jwt) {
         this.jwt = jwt;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "username='" + username + '\'' +
+                ", date=" + date +
+                ", jwt='" + jwt + '\'' +
+                '}';
     }
 }

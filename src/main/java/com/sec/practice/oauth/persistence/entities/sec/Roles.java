@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="roles")
+@Table(name="role")
 public class Roles {
 
     @Id
@@ -39,5 +39,14 @@ public class Roles {
 
     public void setPermissions(List<GrantedPermission> permissions) {
         this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", permissions=" + permissions +
+                '}';
     }
 }

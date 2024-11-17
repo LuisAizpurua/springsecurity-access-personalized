@@ -6,7 +6,7 @@ import com.sec.practice.oauth.exceptions.NotExistUser;
 import com.sec.practice.oauth.exceptions.NotExistUsername;
 import com.sec.practice.oauth.persistence.entities.sec.User;
 import com.sec.practice.oauth.persistence.repository.RepositoryUser;
-import com.sec.practice.oauth.service.IServiceUser;
+import com.sec.practice.oauth.service.interfaces.IServiceUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

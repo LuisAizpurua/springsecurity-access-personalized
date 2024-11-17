@@ -12,7 +12,10 @@ public class Operation {
 
     private String name;
     private String path;
+    @Column(name = "http_method")
     private String httpMethod;
+
+    @Column(name = "permit_all")
     private boolean permitAll;
 
     @ManyToOne

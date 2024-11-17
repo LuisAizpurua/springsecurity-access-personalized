@@ -12,6 +12,7 @@ public class Module {
 
     private String name;
 
+    @Column(name="base_path")
     private String basePath;
 
     public Long getId() {
