@@ -22,7 +22,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    private static enum ProductStatus{
+    private enum ProductStatus{
         DISABLED, ENABLED
     }
 

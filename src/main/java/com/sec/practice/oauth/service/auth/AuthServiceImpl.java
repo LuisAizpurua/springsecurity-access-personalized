@@ -21,9 +21,8 @@ public class AuthServiceImpl{
 
     public UserJwt authenticateUser(AuthUser authUser) {
       User user = repositoryUser.findByUsername(authUser.getUsername())
-              .orElseThrow(() -> new NotExistUser().getMessageException());
+              .orElseThrow(() -> new NotExistsEntity("Not exists the entity User"));
 
-      System.out.println(user.toString());
       return new UserJwt( user.getUsername(),
               new Date(System.currentTimeMillis()),
               serviceJwt.generateJwt(user) );

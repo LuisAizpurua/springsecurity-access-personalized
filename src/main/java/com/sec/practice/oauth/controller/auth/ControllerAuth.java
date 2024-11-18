@@ -2,7 +2,6 @@ package com.sec.practice.oauth.controller.auth;
 
 import com.sec.practice.oauth.dto.AuthUser;
 import com.sec.practice.oauth.dto.UserJwt;
-import com.sec.practice.oauth.dto.UserSave;
 import com.sec.practice.oauth.service.auth.AuthServiceImpl;
 import com.sec.practice.oauth.service.auth.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +36,6 @@ public class ControllerAuth {
         System.out.println("auth: " + userJwt.get().toString());
         return userJwt.isPresent()
                 ? ResponseEntity.ok(userJwt.get())
-                : ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("message","The authenticate invalid"));
+                : ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("message","The authenticate invalid"));
     }
 }

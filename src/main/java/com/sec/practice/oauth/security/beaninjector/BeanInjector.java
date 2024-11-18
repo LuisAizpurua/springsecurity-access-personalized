@@ -1,6 +1,6 @@
 package com.sec.practice.oauth.security.beaninjector;
 
-import com.sec.practice.oauth.exceptions.NotExistUsername;
+import com.sec.practice.oauth.exceptions.NotExists;
 import com.sec.practice.oauth.persistence.repository.RepositoryUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,7 +43,7 @@ public class BeanInjector {
     UserDetailsService userDetailsService(){
         return username ->
             repositoryUser.findByUsername(username)
-                    .orElseThrow(()-> new NotExistUsername().getMessageException(username));
+                    .orElseThrow(()-> new NotExists("Not exists in the entity User a username: " + username));
 
     }
 
