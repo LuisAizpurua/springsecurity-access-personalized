@@ -2,34 +2,28 @@ package com.sec.practice.oauth.service.auth;
 
 import com.sec.practice.oauth.persistence.entities.sec.User;
 import com.sec.practice.oauth.persistence.repository.RepositoryUser;
+import com.sec.practice.oauth.persistence.util.fileproperty.JwtProperty;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 import javax.crypto.SecretKey;
 
 @Service
-public class JwtServiceImpl{
+public class ServiceJwtImpl {
 
     @Autowired
     private RepositoryUser repositoryUser;
 
-    @Value("${minute.exp}")
-    private Long EXP_JWT;
-
-    @Value("${key.jwt}")
-    private String KEY_JWT;
-
-
-
+    @Autowired
+    private JwtProperty jwtProperty;
 
     public String generateJwt(User userdto){
         Date issu = new Date(System.currentTimeMillis());
-        Date exp = new Date((EXP_JWT * 60 * 100) + issu.getTime());
+        Date exp = new Date((jwtProperty.getMinute_exp() * 60 * 100) + issu.getTime());
          return Jwts.builder()
                  .header()
                  .type("JWT")
@@ -51,7 +45,7 @@ public class JwtServiceImpl{
     }
 
     public SecretKey generateKey() {
-        byte[] bytes = Decoders.BASE64.decode(KEY_JWT);
+        byte[] bytes = Decoders.BASE64.decode(jwtProperty.getSecret_key());
         System.out.println(new String(bytes));
         return Keys.hmacShaKeyFor(bytes);
     }

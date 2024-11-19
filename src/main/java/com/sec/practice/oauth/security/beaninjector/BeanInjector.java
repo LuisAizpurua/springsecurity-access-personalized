@@ -38,13 +38,10 @@ public class BeanInjector {
         return dao;
     }
 
-
     @Bean
     UserDetailsService userDetailsService(){
         return username ->
             repositoryUser.findByUsername(username)
                     .orElseThrow(()-> new NotExists("Not exists in the entity User a username: " + username));
-
     }
-
 }

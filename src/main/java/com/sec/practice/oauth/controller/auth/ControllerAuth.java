@@ -20,7 +20,7 @@ public class ControllerAuth {
     private AuthServiceImpl authServiceImpl;
 
     @Autowired
-    private JwtServiceImpl jwtService;
+    private ServiceJwtImpl jwtService;
 
     @GetMapping("/validate")
     public ResponseEntity<Boolean> validate(@RequestParam(name = "jwt") String jwt){

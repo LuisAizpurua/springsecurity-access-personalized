@@ -1,25 +1,21 @@
--- CREACIÓN DE MODULOS
 INSERT INTO module (name, base_path) VALUES ('PRODUCT', '/products');
 INSERT INTO module (name, base_path) VALUES ('CATEGORY', '/categories');
 INSERT INTO module (name, base_path) VALUES ('CUSTOMER', '/customers');
 INSERT INTO module (name, base_path) VALUES ('AUTH', '/auth');
-
--- CREACIÓN DE MÓDULO PARA RETO SECCION 11
 INSERT INTO module (name, base_path) VALUES ('PERMISSION', '/permissions');
 
 
--- CREACIÓN DE OPERACIONES
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_PRODUCTS','', 'GET', false, 1);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE_PRODUCT','/[0-9]*', 'GET', false, 1);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('CREATE_ONE_PRODUCT','', 'POST', false, 1);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('UPDATE_ONE_PRODUCT','/[0-9]*', 'PUT', false, 1);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('DISABLE_ONE_PRODUCT','/[0-9]*/disabled', 'PUT', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL','', 'GET', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE','/[0-9]*', 'GET', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('CREATE_ONE','', 'POST', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('UPDATE_ONE','/[0-9]*', 'PUT', false, 1);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('DISABLE_ONE','/[0-9]*/delete', 'DISABLE', false, 1);
 
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_CATEGORIES','', 'GET', false, 2);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE_CATEGORY','/[0-9]*', 'GET', false, 2);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('CREATE_ONE_CATEGORY','', 'POST', false, 2);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('UPDATE_ONE_CATEGORY','/[0-9]*', 'PUT', false, 2);
-INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('DISABLE_ONE_CATEGORY','/[0-9]*/disabled', 'PUT', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL','', 'GET', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE','/[0-9]*', 'GET', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('CREATE_ONE','', 'POST', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('UPDATE_ONE','/[0-9]*', 'PUT', false, 2);
+INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('DISABLE_ONE','/[0-9]*/delete', 'DELETE', false, 2);
 
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_CUSTOMERS','', 'GET', false, 3);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('REGISTER_ONE','', 'POST', true, 3);
@@ -29,20 +25,19 @@ INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_MY_PROFILE','/profile','GET', false, 4);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('LOGOUT','/logout','POST', true, 4);
 
--- CREACIÓN DE OPERACIONES DE MÓDULO PARA RETO SECCION 11
+
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ALL_PERMISSIONS','','GET', false, 5);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('READ_ONE_PERMISSION','/[0-9]*','GET', false, 5);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('CREATE_ONE_PERMISSION','','POST', false, 5);
 INSERT INTO operation (name, path, http_method, permit_all, module_id) VALUES ('DELETE_ONE_PERMISSION','/[0-9]*','DELETE', false, 5);
 
 
--- CREACIÓN DE ROLES
 INSERT INTO role (name) VALUES ('CUSTOMER');
-INSERT INTO role (name) VALUES ('ASSISTANT_ADMINISTRATOR');
-INSERT INTO role (name) VALUES ('ADMINISTRATOR');
+INSERT INTO role (name) VALUES ('ASSISTANT_ADMINISTRATOR');INSERT INTO role (name) VALUES ('ADMINISTRATOR');
 
--- CREACIÓN DE PERMISOS
+
 INSERT INTO granted_permission (role_id, operation_id) VALUES (1, 15);
+
 
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 1);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 2);
@@ -51,6 +46,7 @@ INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 6);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 7);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 9);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (2, 15);
+
 
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 1);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 2);
@@ -64,25 +60,23 @@ INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 9);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 10);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 15);
 
--- CREACIÓN DE PERMISOS PARA RETO SECCION 11
+
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 17);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 18);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 19);
 INSERT INTO granted_permission (role_id, operation_id) VALUES (3, 20);
 
 
--- CREACIÓN DE USUARIOS
 INSERT INTO "user" (username, name, password, role_id) VALUES ('lmarquez', 'luis márquez', 'Y2xhdmUxMjM=', 1);
 INSERT INTO "user" (username, name, password, role_id) VALUES ('fperez', 'fulano pérez', 'Y2xhdmU0NTY=', 2);
 INSERT INTO "user" (username, name, password, role_id) VALUES ('mhernandez', 'mengano hernández', 'Y2xhdmU3ODk=', 3);
 
--- CREACIÓN DE CATEGORIAS
 INSERT INTO category (name, status) VALUES ('Electrónica', 'ENABLED');
 INSERT INTO category (name, status) VALUES ('Ropa', 'ENABLED');
 INSERT INTO category (name, status) VALUES ('Deportes', 'ENABLED');
 INSERT INTO category (name, status) VALUES ('Hogar', 'ENABLED');
 
--- CREACIÓN DE PRODUCTOS
+
 INSERT INTO product (name, price, status, category_id) VALUES ('Smartphone', 500.00, 'ENABLED', 1);
 INSERT INTO product (name, price, status, category_id) VALUES ('Auriculares Bluetooth', 50.00, 'DISABLED', 1);
 INSERT INTO product (name, price, status, category_id) VALUES ('Tablet', 300.00, 'ENABLED', 1);

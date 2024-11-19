@@ -17,13 +17,14 @@ public class AuthServiceImpl{
     private RepositoryUser repositoryUser;
 
     @Autowired
-    private JwtServiceImpl serviceJwt;
+    private ServiceJwtImpl serviceJwt;
 
     public UserJwt authenticateUser(AuthUser authUser) {
       User user = repositoryUser.findByUsername(authUser.getUsername())
               .orElseThrow(() -> new NotExistsEntity("Not exists the entity User"));
 
-      return new UserJwt( user.getUsername(),
+      return new UserJwt(
+              user.getUsername(),
               new Date(System.currentTimeMillis()),
               serviceJwt.generateJwt(user) );
     }
